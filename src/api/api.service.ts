@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { Url, UrlDocument } from '../schemas/url.schema';
+import { Url, UrlDocument } from '../db-schemas/url.schema';
 import { Model } from 'mongoose';
 import { nanoid } from 'nanoid';
 import { ShortenUrlRequestDto } from './dto/shorten-url-request.dto';
