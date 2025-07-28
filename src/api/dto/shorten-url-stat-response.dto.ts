@@ -3,6 +3,8 @@ import { ApiProperty } from '@nestjs/swagger';
 export class ShortenUrlStatResponseDto {
   constructor(originalUrl: string, shortenedUrl: string, clicks: number) {
     this.originalUrl = originalUrl;
+    this.shortenedUrl = shortenedUrl;
+    this.clicks = clicks;
   }
 
     @ApiProperty({ example: 'https://www.example.com/a-very-long-url-to-shorten' })
