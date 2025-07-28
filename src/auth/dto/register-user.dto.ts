@@ -1,7 +1,7 @@
 import { IsString } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class RegisterDto {
+export class RegisterRequestDto {
   @ApiProperty({ example: 'john_doe' })
   @IsString()
   username: string;
@@ -9,4 +9,14 @@ export class RegisterDto {
   @ApiProperty({ example: 'securePassword123' })
   @IsString()
   password: string;
+}
+
+export class RegisterResponseDto {
+
+  constructor(message: string) {
+    this.message = message;
+  }
+
+  @ApiProperty()
+  message: string;
 }

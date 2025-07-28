@@ -4,7 +4,7 @@ import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from '../schemas/user.schema';
 import { Model } from 'mongoose';
-//import { User } from '../entities/users/user.entity';
+import { LoginResponseDto } from './dto/login-request.dto';
 
 @Injectable()
 export class AuthService {
@@ -22,7 +22,6 @@ export class AuthService {
     const user = { id: Date.now(), username, password: hashed };
     const newUser = new this.userModel(user);
     await newUser.save();
-    return { message: 'User registered' };
   }
 
   async validateUser(username: string, password: string) {
@@ -35,9 +34,7 @@ export class AuthService {
 
   async login(user: any) {
     const payload = { username: user.username, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+    return new LoginResponseDto(this.jwtService.sign(payload));
   }
 
   async getUser(username: string) {

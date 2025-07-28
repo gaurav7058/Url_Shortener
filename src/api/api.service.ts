@@ -2,14 +2,15 @@ import { Injectable, NotFoundException, BadRequestException } from '@nestjs/comm
 import { InjectModel } from '@nestjs/mongoose';
 import { Url, UrlDocument } from '../schemas/url.schema';
 import { Model } from 'mongoose';
-import { ShortenDto } from './api.shortenDto';
 import { nanoid } from 'nanoid';
+import { ShortenUrlRequestDto } from './dto/shorten-url-request.dto';
+
 
 @Injectable()
 export class ApiService {
   constructor(@InjectModel(Url.name) private urlModel: Model<UrlDocument>) {}
 
-  async createShortUrl(dto: ShortenDto): Promise<Url> {
+  async createShortUrl(dto: ShortenUrlRequestDto): Promise<Url> {
     const code = dto.customCode == "" || dto.customCode == undefined ? await this.generateUniqueCode(): dto.customCode;
     
     const existing = await this.urlModel.findOne({ shortCode: code });

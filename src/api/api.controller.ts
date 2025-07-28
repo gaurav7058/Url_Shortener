@@ -1,10 +1,11 @@
 import { Controller, Post, Get, Param, UseGuards, Body, HttpCode, Res, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
-import {ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { ShortenDto } from './api.shortenDto';
+import {ApiBearerAuth, ApiOkResponse, ApiTags } from '@nestjs/swagger';
 import { Response, Request } from 'express';
-import { Throttle } from '@nestjs/throttler';
 import { ApiService } from './api.service';
+import { ShortenUrlRequestDto } from './dto/shorten-url-request.dto';
+import { ShortenUrlResponseDto } from './dto/shorten-url-response.dto';
+import { ShortenUrlStatResponseDto } from './dto/shorten-url-stat-response.dto';
 
 @ApiTags()
 @ApiBearerAuth('jwt-auth') // <-- same name used in main.ts
@@ -15,12 +16,12 @@ export class ApiController {
   
   @UseGuards(AuthGuard('jwt'))
   @Post('api/shorten')
-  async shorten(@Req() request: Request, @Body() dto: ShortenDto) {
+  @HttpCode(201)
+  @ApiOkResponse({ description: 'Shortened URL created successfully', type: ShortenUrlResponseDto })
+  async shorten(@Req() request: Request, @Body() dto: ShortenUrlRequestDto) {
     const url = await this.apiService.createShortUrl(dto);
-    return {
-      originalUrl: url.originalUrl,
-      shortUrl: `${request.protocol}://${request.get('host')}/r/${url.shortCode}`,
-    };
+    return new ShortenUrlResponseDto(url.originalUrl,
+       `${request.protocol}://${request.get('host')}/r/${url.shortCode}`);
   }
   
   @Get('r/:shortCode')
@@ -32,12 +33,13 @@ export class ApiController {
 
   @UseGuards(AuthGuard('jwt'))
   @Get('api/stats/:shortCode')
+  @HttpCode(200)
+  @ApiOkResponse({ description: 'URL statistics retrieved successfully', type: ShortenUrlStatResponseDto })
   async stats(@Req() request: Request, @Param('shortCode') code: string) {
     const url = await this.apiService.getStats(code);
-    return {
-      originalUrl: url.originalUrl,
-      shortUrl: `${request.protocol}://${request.get('host')}/r/${url.shortCode}`,
-      clicks: url.clicks,
-    };
+    return new ShortenUrlStatResponseDto(
+        url.originalUrl,
+       `${request.protocol}://${request.get('host')}/r/${url.shortCode}`,
+       url.clicks);
   }
 }
