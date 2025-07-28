@@ -10,13 +10,3 @@ export class RegisterRequestDto {
   @IsString()
   password: string;
 }
-
-export class RegisterResponseDto {
-
-  constructor(message: string) {
-    this.message = message;
-  }
-
-  @ApiProperty()
-  message: string;
-}
