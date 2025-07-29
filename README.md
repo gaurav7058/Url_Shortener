@@ -65,6 +65,7 @@ Includes interactive Swagger documentation for ease of use.
 - The backend is deployed on Render:
 -  Live URL: https://url-shortener-1-r9s2.onrender.com/docs
 
+
 ### 📚 API endpoints
    - 1 - API endpoint
      - Method : POST
@@ -93,6 +94,11 @@ Includes interactive Swagger documentation for ease of use.
      - Endpoint : /:shortCode
      - Description : Redirect to the original long URL
      -  Auth Required : No
+
+## 🎥 Project Demo Video
+
+Watch a walkthrough of the project here:  
+👉 [Click to watch the video](https://drive.google.com/file/d/1EDIbj-C7bdnCKsVFcwVp-WSANtN7KrYA/view?usp=sharing)
 
 ### 🏅 Bonus Features Implemented
 - ✅ Authentication & API Token Management
