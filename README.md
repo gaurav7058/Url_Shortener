@@ -58,9 +58,7 @@ Includes interactive Swagger documentation for ease of use.
   - npm run build
   - npm run start
 
-5 **Access the API**
-  - Visit: http://localhost:3000
-  - Swagger Docs: http://localhost:3000/api
+
 
 
 ### 🌐 Deployed Version
