@@ -2,9 +2,9 @@ import { BadRequestException, Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcryptjs';
 import { JwtService } from '@nestjs/jwt';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument } from '../schemas/user.schema';
+import { User, UserDocument } from '../db-schemas/user.schema';
 import { Model } from 'mongoose';
-//import { User } from '../entities/users/user.entity';
+import { LoginResponseDto } from './dto/login-response.dto';
 
 @Injectable()
 export class AuthService {
@@ -12,17 +12,23 @@ export class AuthService {
     constructor(private jwtService: JwtService, @InjectModel(User.name) private userModel: Model<UserDocument>){}
 
     async register(username: string, password: string) {
-
-    const existingUser = await this.getUser(username);
-    if (existingUser) {
-      throw new BadRequestException('Username already exists');
-    }
+      try {
+        const existingUser = await this.getUser(username);
+        if (existingUser) {
+        throw new BadRequestException('Username already exists');
+      }
     
-    const hashed = await bcrypt.hash(password, 10);
-    const user = { id: Date.now(), username, password: hashed };
-    const newUser = new this.userModel(user);
-    await newUser.save();
-    return { message: 'User registered' };
+      const hashed = await bcrypt.hash(password, 10);
+      const user = { id: Date.now(), username, password: hashed };
+      const newUser = new this.userModel(user);
+      await newUser.save();
+      } catch (error) {
+        // Handle known exceptions or rethrow as InternalServerError
+        if (error instanceof BadRequestException) {
+          throw error;
+        }
+        throw new BadRequestException('Database error: ' + error.message);
+      }
   }
 
   async validateUser(username: string, password: string) {
@@ -35,12 +41,14 @@ export class AuthService {
 
   async login(user: any) {
     const payload = { username: user.username, sub: user.id };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+    return new LoginResponseDto(this.jwtService.sign(payload));
   }
 
   async getUser(username: string) {
-    return await this.userModel.findOne({ username });
+    try {
+      return await this.userModel.findOne({ username });
+    } catch (error) {
+      throw new BadRequestException('Database error: ' + error.message);
+    }
   }
 }

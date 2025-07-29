@@ -1,7 +1,7 @@
 import { IsOptional, IsString, IsUrl } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
 
-export class ShortenDto {
+export class ShortenUrlRequestDto {
   @ApiProperty({ example: 'https://www.example.com/a-very-long-url-to-shorten' })
   @IsUrl()
   url: string;
