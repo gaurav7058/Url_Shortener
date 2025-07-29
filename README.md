@@ -83,7 +83,7 @@ Includes interactive Swagger documentation for ease of use.
      - Description : Shorten a long URL (optionally custom code)
      - Auth Required : Yes
 
-   - 4 - Status
+   - 4 - Stats
      - Method : GET
      - Endpoint : /api/stats/:code
      - Description : Get stats for a short URL
