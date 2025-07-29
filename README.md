@@ -67,29 +67,29 @@ Includes interactive Swagger documentation for ease of use.
 
 
 ### 📚 API endpoints
-   - 1 - API endpoint
+   - 1 - Register
      - Method : POST
      - Endpoint : /auth/register
      - Description : Register a new user
   
-   - 2 - API endpoint
+   - 2 - Login
      - Method : POST
      - Endpoint : /auth/login
      - Description : Log in and receive JWT token
   
-   - 3 - API endpoint
+   - 3 - Shorten
      - Method : POST
      - Endpoint : /api/shorten
      - Description : Shorten a long URL (optionally custom code)
      - Auth Required : Yes
 
-   - 4 - API endpoint
+   - 4 - Status
      - Method : GET
      - Endpoint : /api/stats/:code
      - Description : Get stats for a short URL
      - Auth Required : Yes
 
-   - 5 - API endpoint
+   - 5 - Get Long URl
      - Method : GET
      - Endpoint : /:shortCode
      - Description : Redirect to the original long URL
