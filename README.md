@@ -69,9 +69,9 @@ Includes interactive Swagger documentation for ease of use.
 
 ### API endpoints
    - 1 - API endpoints
-   - Method : POST
-   - Endpoint : /auth/register
-   - Description : Register a new user
+     - Method : POST
+     - Endpoint : /auth/register
+     - Description : Register a new user
   
    - 2 - API endpoints
    - Method : POST
