@@ -65,7 +65,7 @@ Includes interactive Swagger documentation for ease of use.
 
 ### 🌐 Deployed Version
 - The backend is deployed on Render:
-- 👉 Live URL: https://url-shortener-1-r9s2.onrender.com/docs
+-  Live URL: https://url-shortener-1-r9s2.onrender.com/docs
 
 
 ### 🏅 Bonus Features Implemented
