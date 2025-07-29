@@ -30,7 +30,7 @@ URL Shortener API is a backend service that allows users to convert long, comple
 
 
 
-🚀 Setup & Run Instructions
+## 🚀 Setup & Run Instructions
 🔧 Prerequisites
 Node.js (v16 or higher)
 
@@ -41,9 +41,6 @@ MongoDB (running locally or a hosted instance like MongoDB Atlas)
 ⚙️ Running Locally (Without Docker)
 Clone the repository
 
-bash
-Copy
-Edit
 git clone https://github.com/gaurav7058/Url_Shortener.git
 cd url-shortner
 
@@ -64,12 +61,12 @@ npm run start:dev
 Access the API
 Visit http://localhost:3000 in your browser or API client.
 
-🌐 Deployed Version (via Render)
+## 🌐 Deployed Version (via Render)
 The backend is deployed on Render and can be accessed here:
 
 👉 Live URL: https://your-render-url.onrender.com 
 
-🏅 Bonus Features Implemented
+## 🏅 Bonus Features Implemented
 ✅ Authentication & API Token Management
 
 Implemented user authentication using JWT.
