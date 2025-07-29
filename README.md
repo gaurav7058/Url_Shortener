@@ -68,29 +68,29 @@ Includes interactive Swagger documentation for ease of use.
 -  Live URL: https://url-shortener-1-r9s2.onrender.com/docs
 
 ### API endpoints
-   - 1 - API endpoints
+   - 1 - API endpoint
      - Method : POST
      - Endpoint : /auth/register
      - Description : Register a new user
   
-   - 2 - API endpoints
+   - 2 - API endpoint
      - Method : POST
      - Endpoint : /auth/login
      - Description : Log in and receive JWT token
   
-   - 3 - API endpoints
+   - 3 - API endpoint
      - Method : POST
      - Endpoint : /api/shorten
      - Description : Shorten a long URL (optionally custom code)
      - Auth Required : Yes
 
-   - 4 - API endpoints
+   - 4 - API endpoint
      - Method : GET
      - Endpoint : /api/stats/:code
      - Description : Get stats for a short URL
      - Auth Required : Yes
 
-   - 5 - API endpoints
+   - 5 - API endpoint
      - Method : GET
      - Endpoint : /:shortCode
      - Description : Redirect to the original long URL
