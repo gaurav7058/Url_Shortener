@@ -55,6 +55,7 @@ Includes interactive Swagger documentation for ease of use.
   - DB_PORT=27017
 
 4 **Start the Application**
+  - npm run build
   - npm run start
 
 5 **Access the API**
