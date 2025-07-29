@@ -22,11 +22,10 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
-📄 Project Description
+## 📄 Project Description
+
 URL Shortener API is a backend service that allows users to convert long, complex URLs into shorter, more manageable links. Users can optionally provide custom short codes, and the service tracks basic analytics like the number of times a short URL is accessed. Built using NestJS and MongoDB, this project follows RESTful design principles and includes interactive API documentation via Swagger.
 
 
